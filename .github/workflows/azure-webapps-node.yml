@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QS SMART AI - Team Quantify</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  * { font-family: 'Inter', sans-serif; }
+  .tab-active { border-bottom: 3px solid #2563eb; color: #2563eb; font-weight: 600; }
+  .tab-inactive { border-bottom: 3px solid transparent; color: #6b7280; }
+  .tab-inactive:hover { color: #2563eb; border-bottom-color: #93c5fd; }
+  .drop-zone { border: 2px dashed #93c5fd; transition: all 0.3s; }
+  .drop-zone.dragover { border-color: #2563eb; background: #eff6ff; }
+  .fade-in { animation: fadeIn 0.4s ease-in; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinner { animation: spin 1s linear infinite; border: 3px solid #e5e7eb; border-top-color: #2563eb; border-radius: 50%; width: 24px; height: 24px; display: inline-block; }
+  .pulse-red { animation: pulseRed 1.5s infinite; }
+  @keyframes pulseRed { 0%,100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.4); } 50% { box-shadow: 0 0 0 10px rgba(239,68,68,0); } }
+  .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+  .card-hover { transition: all 0.2s; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+  .badge { font-size: 0.65rem; padding: 2px 8px; border-radius: 9999px; font-weight: 600; text-transform: uppercase; }
+</style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<!-- Navigation Bar -->
+<nav class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <div>
+          <h1 class="text-lg font-bold text-gray-900">QS SMART AI</h1>
+          <p class="text-xs text-gray-500 -mt-1">Team Quantify</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="text-xs text-gray-400">Cap. 652 Compliant</span>
+        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+          <span class="text-blue-600 text-sm font-semibold">QS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Tabs -->
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex space-x-1 overflow-x-auto" id="tabBar">
+      <button onclick="switchTab(0)" class="tab-active px-4 py-3 text-sm whitespace-nowrap transition-all" data-tab="0">📁 Document Management</button>
+      <button onclick="switchTab(1)" class="tab-inactive px-4 py-3 text-sm whitespace-nowrap transition-all" data-tab="1">📜 Clause Analysis & RAG</button>
+      <button onclick="switchTab(2)" class="tab-inactive px-4 py-3 text-sm whitespace-nowrap transition-all" data-tab="2">📊 VO Assessment Dashboard</button>
+      <button onclick="switchTab(3)" class="tab-inactive px-4 py-3 text-sm whitespace-nowrap transition-all" data-tab="3">⏰ SOP Deadline Tracker</button>
+    </div>
+  </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 py-6">
+
+<!-- ============ MODULE 1: Document Management ============ -->
+<div id="module0" class="module fade-in">
+  <div class="mb-6">
+    <h2 class="text-2xl font-bold text-gray-900">Automated Document Management</h2>
+    <p class="text-gray-500 text-sm mt-1">Upload contract documents for AI-powered categorization, OCR extraction, and workflow routing.</p>
+  </div>
+
+  <!-- Workflow Steps -->
+  <div class="grid grid-cols-4 gap-4 mb-6">
+    <div class="bg-blue-600 text-white rounded-lg p-3 text-center">
+      <div class="w-8 h-8 bg-white/20 rounded-full mx-auto mb-2 flex items-center justify-center font-bold">1</div>
+      <p class="text-xs font-medium">Upload Documents</p>
+    </div>
+    <div class="bg-blue-100 text-blue-800 rounded-lg p-3 text-center">
+      <div class="w-8 h-8 bg-blue-200 rounded-full mx-auto mb-2 flex items-center justify-center font-bold">2</div>
+      <p class="text-xs font-medium">Review & Verify</p>
+    </div>
+    <div class="bg-gray-100 text-gray-500 rounded-lg p-3 text-center">
+      <div class="w-8 h-8 bg-gray-200 rounded-full mx-auto mb-2 flex items-center justify-center font-bold">3</div>
+      <p class="text-xs font-medium">Generate Application</p>
+    </div>
+    <div class="bg-gray-100 text-gray-500 rounded-lg p-3 text-center">
+      <div class="w-8 h-8 bg-gray-200 rounded-full mx-auto mb-2 flex items-center justify-center font-bold">4</div>
